@@ -4,12 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"cd client && npm run build\"  \"cd server && npm run watch\"",
-    "start": "node server.js",
-    "server": "",
-    "build": "",
-    "install": "cd server && npm install",
-    "client": ""
+    "dev": "concurrently \"cd client && npm run build\"  \"cd server && npm run start\"",
+    "install": "cd server && npm install && cd ../client && npm install"    
   },
   "keywords": [],
   "author": "",
