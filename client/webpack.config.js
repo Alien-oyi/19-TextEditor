@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const WebpackPwaManifest = require('webpack-pwa-manifest');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const path = require('path');
@@ -14,8 +14,13 @@ module.exports = () => {
       main: './src/js/index.js',
       install: './src/js/install.js'
     },
+    devServer: {
+      hot: "only",
+      proxy: {
+        '/api': 'http://localhost:3001',
+    },
     output: {
-      filename: 'bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
@@ -24,9 +29,22 @@ module.exports = () => {
         title: 'JATE',}),
       new MiniCssExtractPlugin(),
       new InjectManifest({
-        swSrc: './src/js/sw.js',
+        swSrc: './src/sw.js',
         swDest: 'server-worker.js',}),
-    ],
+      new WebpackPwaManifest({
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'A simple text editor',
+        background_color: '#01579b',
+        theme_color: '#ffffff',
+        crossorigin: 'null',
+        fingerprints: false,
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+          },
+        ]})],
     module: {
       rules: [
         {
@@ -40,10 +58,10 @@ module.exports = () => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-            },
+          },
           },
         },       
       ],
     },
-  };
-};
+  }
+}};
