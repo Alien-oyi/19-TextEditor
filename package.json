@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "cd server && npm run watch",
+    "dev": "concurrently \"cd client && npm run dev\"  \"cd server && npm run watch\"",
     "start": "node server.js",
     "server": "",
     "build": "",
