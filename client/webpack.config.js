@@ -13,14 +13,7 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js',
-      editor: './src/js/editor.js',
-    },
-    devServer: {
-      hot: "only",
-      proxy: {
-        '/api': 'http://localhost:3001',
-      }
+      install: './src/js/install.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -33,13 +26,16 @@ module.exports = () => {
           use: ['style-loader', 'css-loader',],
         },
         {
-          test: /\.js$/,
-          exclude: /(node_modules|bower_components)/,
+          test: /\.m?js$/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-transform-runtime'],
+              plugins:[
+								'@babel/plugin-proposal-object-rest-spread',
+								'@babel/transform-runtime',
+							],
           },
           },
         },       
@@ -47,7 +43,6 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        inject: true,
         template: './index.html',
         manifest: './manifest.json',
         title: 'JATE',}),

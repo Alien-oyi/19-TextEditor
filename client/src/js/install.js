@@ -6,7 +6,7 @@ const textHeader = document.getElementById('textHeader');
 window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     butInstall.style.visibility = 'visible';
-    textHeader.textContent = 'Clink to install';
+    textHeader.textContent = 'Click to install';
 
 
 // TODO: Implement a click event handler on the `butInstall` element
