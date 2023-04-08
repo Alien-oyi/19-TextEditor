@@ -2,7 +2,7 @@
   "name": "JATE",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "build:watch": "webpack --watch"
   },
   "author": "2U",
