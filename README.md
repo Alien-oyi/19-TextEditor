@@ -20,7 +20,7 @@ A text editor is a software application that allows users to create and edit tex
 https://text-editor101.herokuapp.com/
 
 ## Screenshot
-![App Screenshot](https://github.com/Alien-oyi/19-TextEditor/blob/main/screenshoot/Screenshot%20(185).png?raw=true)
+![App Screenshot](https://github.com/Alien-oyi/19-TextEditor/blob/main/screenshoot/Screenshot%20(187).png?raw=true)
 
 ## Installation
 None
